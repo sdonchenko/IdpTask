@@ -14,44 +14,42 @@ public class ProductServlet extends HttpServlet {
 
     public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        String name = "";
-        String password = "";
-
         HttpSession session = request.getSession(false);
-        if (session != null) {
-            name = (String) session.getAttribute("name");
-            password = (String) session.getAttribute("password");
-        }
+        if (session != null
+                && "sergii".equals(session.getAttribute("name"))
+                && "sdonch$2015".equals(session.getAttribute("password"))) {
 
-        response.setContentType("text/html");
+            response.setContentType("text/html");
 
-        PrintWriter out = response.getWriter();
+            PrintWriter out = response.getWriter();
 
-        Cookie[] cookies = request.getCookies();
+            Cookie[] cookies = request.getCookies();
 
-        String orderList = "";
+            String orderList = "";
 
-        for (int i = 0; i < cookies.length; i++) {
-            Cookie cookie = cookies[i];
-            if (cookie.getName().contains("product") && request.getParameter(cookie.getName()) != null) {
-                cookie.setValue("- Ordered " + cookie.getName());
-                orderList += "<br/>" + cookie.getValue() + ";";
+            for (int i = 0; i < cookies.length; i++) {
+                Cookie cookie = cookies[i];
+                if (cookie.getName().contains("product") && request.getParameter(cookie.getName()) != null) {
+                    cookie.setValue("- Ordered " + cookie.getName());
+                    orderList += "<br/>" + cookie.getValue() + ";";
+                }
             }
-        }
 
-        out.println("<!DOCTYPE HTML>\n" +
-                "<html>\n" +
-                "<head>\n" +
-                "<title>Order page</title>\n" +
-                "</head>\n" +
-                "<body>\n" +
-                "<b>Order Confirmation:</b>" +
-                orderList.substring(0, orderList.length() - 1) + ". <br/><br/>" +
-                "Your login: " + name +  " & password: " + password + " (it is from session)" +
-                "<form action=\"loginPage\" method=\"get\">\n" +
-                "   <input type=\"submit\" value=\"logout\"/>\n" +
-                "</form>" +
-                "</body>\n" +
-                "</html>");
+            out.println("<!DOCTYPE HTML>\n" +
+                    "<html>\n" +
+                    "<head>\n" +
+                    "<title>Order page</title>\n" +
+                    "</head>\n" +
+                    "<body>\n" +
+                    "<b>Order Confirmation:</b>" +
+                    orderList.substring(0, orderList.length() - 1) + ". <br/><br/>" +
+                   "<form action=\"loginPage\" method=\"get\">\n" +
+                    "   <input type=\"submit\" value=\"logout\"/>\n" +
+                    "</form>" +
+                    "</body>\n" +
+                    "</html>");
+        } else {
+            response.sendRedirect("/loginPage.jsp");
+        }
     }
 }
