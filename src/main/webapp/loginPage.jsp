@@ -7,14 +7,14 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
-    <head>
-        <title></title>
-    </head>
-    <body>
-        <form action="loginPage" method="doGet">
-            Login: <input type="text" name="name"/>
-            Password: <input type="password" name="password"/>
-            <input type="submit" value="login"/>
-        </form>
-    </body>
+<head>
+    <title></title>
+</head>
+<body>
+<form action="loginPage" method="doGet">
+    Login: <input type="text" name="name"/>
+    Password: <input type="password" name="password"/>
+    <input type="submit" value="login"/>
+</form>
+</body>
 </html>
