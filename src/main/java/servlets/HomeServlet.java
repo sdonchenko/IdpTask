@@ -8,11 +8,18 @@ import java.io.PrintWriter;
 
 @WebServlet("/loginPage")
 public class HomeServlet extends HttpServlet {
-    private static final long serialVersionUID = 4234153507302952345L;
 
     @Override
-    public void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doRequest(request, response);
+    }
 
+    @Override
+    public void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        doRequest(request, response);
+    }
+
+    private void doRequest(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         response.setContentType("text/html");
 
         String name = request.getParameter("name");

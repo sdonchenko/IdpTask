@@ -11,7 +11,7 @@
     <title></title>
 </head>
 <body>
-<form action="loginPage" method="doGet">
+<form action="loginPage" method="post">
     Login: <input type="text" name="name"/>
     Password: <input type="password" name="password"/>
     <input type="submit" value="login"/>

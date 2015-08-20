@@ -8,7 +8,7 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Product page</title>
+    <title></title>
     <script type="text/javascript">
 
         var qvalue = "0";
@@ -30,7 +30,7 @@
     </script>
 </head>
 <body>
-<form action="productPage" method="get">
+<form action="productPage" method="post">
     <table>
         <tr>
             <th>Product</th>
@@ -76,7 +76,7 @@
     </table>
     <input type="submit" value="checkout"/>
 </form>
-<form action="loginPage" method="get">
+<form action="loginPage" method="post">
     <input type="submit" value="logout"/>
 </form>
 </body>
